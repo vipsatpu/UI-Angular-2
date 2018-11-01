@@ -1,0 +1,12 @@
+#footer{
+    
+    background: #e8e8e8;
+    padding: 15px 0;
+    bottom: 0;
+    position: relative;
+    width: 100%;
+}
+
+#footer div a{
+    color: #003596;
+}

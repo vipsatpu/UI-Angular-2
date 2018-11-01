@@ -1,0 +1,117 @@
+<div class="maingallery main-content-wrapper">
+	<div class="header">
+		<h2>Book a Test Drive</h2>
+	</div>
+
+	<div>
+		<div *ngIf="success==-1" class="form-holder with-image">
+			<div class="form-box">
+				<form class="form-inline cp-form" action="/action_page.php" #ctForm="ngForm" (submit)="bookTestDrive()" >
+			  <div class="form-group">
+			    <label for="firstName">First Name:</label>
+			    <input type="text" required [(ngModel)]="user_data.firstName" class="form-control" id="firstName" name="firstName" minlength="3" maxlength="20" #firstName="ngModel">
+			    <div class="f_message">
+				    <div class="error" *ngIf="firstName.errors && firstName.errors.required && (firstName.dirty || firstName.touched)">
+				    	<span class="fa fa-times">&nbsp;</span> First Name required
+				    </div>
+				    <div class="error" *ngIf="firstName.errors && firstName.errors.minlength   && (firstName.dirty || firstName.touched)">
+				    	<span class="fa fa-times">&nbsp;</span> Provide valid first name
+				    </div>
+				</div>
+			  </div>
+
+			  <div class="form-group">
+			    <label for="lastName">Last Name:</label>
+			    <input type="text" required [(ngModel)]="user_data.lastName" class="form-control" id="lastName" name="lastName" minlength="2" maxlength="20" #lastName="ngModel">
+			    <div class="f_message">
+				    <div class="error" *ngIf="lastName.errors && lastName.errors.required && (lastName.dirty || lastName.touched)">
+				    	<span class="fa fa-times">&nbsp;</span> Last Name required
+				    </div>
+				    <div class="error" *ngIf="lastName.errors && lastName.errors.minlength && (lastName.dirty || lastName.touched)">
+				    	<span class="fa fa-times">&nbsp;</span> Provide valid last name
+				    </div>
+				</div>
+			  </div>
+
+			   <div class="form-group">
+			    <label for="mobileno">Mobile Number:</label>
+			    <input type="text" required class="form-control" [(ngModel)]="user_data.mobileNo"  id="mobileNo" name="mobileNo" maxlength="10" #mobileNo="ngModel">
+			    <div class="f_message">
+			    	<div class="error" *ngIf="mobileNo.errors && mobileNo.errors.required && (mobileNo.dirty || mobileNo.touched)">
+				    	<span class="fa fa-times">&nbsp;</span> Mobile number required
+				    </div>
+				    <div class="error" *ngIf="mobileNo.errors && mobileNo.errors.maxlength && (mobileNo.dirty || mobileNo.touched)">
+				    	<span class="fa fa-times">&nbsp;</span> Provide valid mobile number
+				    </div>
+			    </div>
+			  </div>
+
+			  <div class="form-group">
+			    <label for="email">Email:</label>
+			    <input type="email" required class="form-control" [(ngModel)]="email" id="email" name="email" minlength="6" maxlength="300" #emailId="ngModel">
+			    <div class="f_message">
+			    	<div class="error" *ngIf="emailId.errors && emailId.errors.required && (emailId.dirty || emailId.touched)">
+				    	<span class="fa fa-times">&nbsp;</span> Email id required
+				    </div>
+				    <div class="error" *ngIf=" emailId.invalid && (emailId.dirty || emailId.touched)">
+				    	<span class="fa fa-times">&nbsp;</span> Provide valid email id
+				    </div>
+			    </div>
+			  </div>
+
+			   <div class="form-group">
+			    <label for="variantSelected">Choose Variant:</label>
+			    
+			    <select class="form-control" name="variantSelected" id="variantSelected" required [(ngModel)]= "user_data.variantSelected" #variantSelected="ngModel">
+			    	<option value=-1 selected="">Select</option>
+			    	<option *ngFor="let v of vehicleList" value="v.variantId">
+			    		{{v.variantName}}
+			    	</option>
+			    </select>
+
+			    <div class="f_message">
+				    <div class="error" *ngIf="variantSelected.errors && variantSelected.errors.required && (variantSelected.dirty || variantSelected.touched)">
+				    	<span class="fa fa-times">&nbsp;</span> Select your desired car variant
+				    </div>
+				</div>
+			  </div>
+
+				<div class="form-group">
+
+						<label for="driveDate">Desired date:</label>
+
+						<input class="form-control datepicker" placeholder="MM/DD/YYYY"  name="driveDate" id="driveDate"  [(ngModel)]="user_data.driveDate" #driveDate="ngModel" >
+						<div class="f_message">
+							<!--div class="error" *ngIf="driveDate.errors && driveDate.errors.required && (driveDate.dirty || driveDate.touched)">
+								<span class="fa fa-times">&nbsp;</span> Select a date 
+							</div-->
+					</div>
+				</div>
+
+			  <!--div class="checkbox">
+			    <label><input type="checkbox"> Remember me</label>
+			  </div-->
+			  
+			  	<div class="button-group">
+			  <button type="submit" class="btn btn-default" [disabled]="!ctForm.form.valid || !ctForm.form.touched"  >PROCEED </button>
+			  <button type="reset" class="btn btn-default">RESET</button>
+			  </div>
+
+			</form>
+			</div>
+
+			<div class="image-box">
+				<img src="{{imageHostURL}}{{ vehicleList[0]['imagePath'] }}" >
+			</div>
+		</div>
+
+		<div *ngIf="success==1" class="message-holder">
+				<div class="alert alert-success">
+					<strong>Success!</strong> Your request has been saved, our executive will reach you soon.
+					<br> Redirected in {{timer}} second(s)
+				</div>
+			</div>
+
+	</div>
+
+</div>

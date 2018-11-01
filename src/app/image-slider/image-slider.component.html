@@ -1,0 +1,94 @@
+<ngx-hm-carousel
+  (ngModelChange)="indexChanged($event)"
+  [autoplay-speed]="3000"
+  [autoplay]="true"
+  [infinite]="infinite"
+  [between-delay]="2000"
+  class="carousel c-accent">
+ 
+  <section ngx-hm-carousel-container class="content">
+    <article class="item cursor-pointer"
+      *ngFor="let avatar of images"
+      ngx-hm-carousel-item>
+      <div class="img">
+        <img src="{{avatar.name}}" style="width:100%" />
+      </div>
+    </article>
+  </section>
+ 
+  <ng-template #carouselPrev>
+    <div class="click-area">
+      <i class="material-icons"> < </i>
+    </div>
+  </ng-template>
+  <ng-template #carouselNext>
+    <div class="click-area">
+      <i class="material-icons">></i>
+    </div>
+  </ng-template>
+ 
+  <ng-template #carouselDot let-model>
+    <div class="ball bg-accent"
+      [class.visible]="true" class="dots"></div>
+  </ng-template>
+  <!--ng-template #carouselProgress let-progress>
+    <div class="progress" *ngIf="progress > 0"
+    [style.width]="(direction==='right' ? progress : 100 - progress) + '%'"></div>
+  </ng-template--> 
+</ngx-hm-carousel>
+<!--div id="containers" class="container" style="height: 70px;">
+    <div
+      ng2-carouselamos
+      class="slides-wrapper"
+      [items]="images"
+      [width]="auto"
+      [$item]="item"
+        >
+    </div>
+  <div class="container">
+      <ng-template #prev id="containerImage"> 
+            <img src="/src/assets/SliderImages/left.png" id="left"  width="42px" height="42px"/>
+      </ng-template>
+      <ng-template #next>
+        <img src="/src/assets/SliderImages/right.png" width="42px" height="42px" id="right" />
+      </ng-template>
+      <ng-template #item let-item let-i="index">
+          <div class="items">
+            <img src="{{ item.name}}">
+          </div>
+      </ng-template>
+  </div>
+</div-->
+
+<div class="highlight-box">
+  <div class="col-md-4 color-box">
+      <div class="color-box-content">
+          <h2>
+            <span class="fa fa-car">&nbsp;</span>BUILD YOU CAR
+          </h2>
+          <p>
+              From the wide ranges of car, select yours and customize it
+          </p>
+      </div>
+  </div>
+  <div class="col-md-4 color-box">
+    <div class="color-box-content">
+         <h2>
+          <span class="fa fa-map-marker">&nbsp;</span>LOCATE A DEALER
+         </h2>
+         <p>
+              Our Dealers are everywhere, find the one nearby you
+          </p>
+      </div>
+  </div>
+  <div class="col-md-4 color-box">
+    <div class="color-box-content">
+      <h2>
+        <span class="fa fa-envelope">&nbsp;</span>CONTACT US
+      </h2>
+      <p>
+          Call us at our toll free number <b>000 0000 0000</b>
+      </p>
+    </div>
+  </div>
+</div>

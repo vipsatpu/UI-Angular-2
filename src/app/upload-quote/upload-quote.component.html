@@ -1,0 +1,68 @@
+<div id="upload-quote-modal" class="modalss" #uploadQuoteModal>
+<div class="maingallery main-content-wrapper white-bg">
+	<div class="header">
+		<h2>
+			Upload Quote 
+			<button #btnClose type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss('Cross click')"  >
+					<span aria-hidden="true">&times;</span>
+			</button>
+		</h2>
+		<h4>Quotation Id : <span>{{qtn_id}}</span></h4>
+	</div>
+
+	<div *ngIf="success==1" class="message-holder">
+		<div class="alert alert-success">
+				{{success_msg}}
+		</div>
+	</div>
+
+	<div *ngIf="success==0" class="message-holder">
+		<div class="alert alert-error">
+				{{error_msg}}
+		</div>
+	</div>
+
+	 	<div *ngIf="success==-1">
+			<div class="form-box">
+			  <form class="form-inline cp-form"  #ctForm="ngForm" (submit)="submitQuote()" >
+			  <div class="form-group">
+			    <label for="discountedPrice">Discounted Price</label>
+			    <input type="text" required  class="form-control" id="discountedPrice" name="discountedPrice" minlength="3" maxlength="20" [(ngModel)]="input1.discountedPrice" #discountedPrice="ngModel" >
+			  	
+			  	<div class="f_message">
+				    <div class="error" *ngIf="discountedPrice.errors && discountedPrice.errors.required && (discountedPrice.dirty || discountedPrice.touched)">
+				    	<span class="fa fa-times">&nbsp;</span> Provide discounted price
+				    </div>
+				    <div class="error" *ngIf="discountedPrice.errors && discountedPrice.errors.minlength   && (discountedPrice.dirty || discountedPrice.touched)">
+				    	<span class="fa fa-times">&nbsp;</span> Provide discount amount
+				    </div>
+				</div>
+
+			  </div>	
+			  
+
+
+			  <div class="form-group">
+			  	<label for="">Upload Quotation File</label>
+			  	<input type="file" required class="form-control" id="qtn-file" name="qtn-file" [(ngModel)]="fileToUpload" #filePath="ngModel" (change)="onFileChange($event)">
+
+			  	<div class="f_message">
+				    <div class="error" *ngIf="filePath.errors && filePath.errors.required && (filePath.dirty || filePath.touched)">
+				    	<span class="fa fa-times">&nbsp;</span> Upload file
+				    </div>
+				</div>
+			  </div>
+
+			  <div class="button-group">
+				  <button type="submit" class="btn btn-default" [disabled]="!ctForm.form.valid || !ctForm.form.touched">PROCEED
+				  </button>
+				  <button type="reset" class="btn btn-default">RESET</button>
+			  </div>
+
+			  
+
+			</form>
+			</div>
+		</div>
+</div>
+</div>

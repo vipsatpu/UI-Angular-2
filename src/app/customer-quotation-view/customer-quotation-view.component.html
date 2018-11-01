@@ -1,0 +1,47 @@
+<div class="maingallery main-content-wrapper">
+	<div class="header">
+		<h2>Quotation Response</h2>
+	</div>
+	<div *ngIf="quotationList && quotationList.length">
+		<table class="table table-striped">
+    <thead>
+      <tr>
+        <th *ngFor="let h of tablerHeaders">{{h}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let d of quotationList">
+      	<td>{{d.quotation_id}}</td>
+        <td>{{d.dealer["firstName"] }}</td>
+        <td>
+        	<i class="fa fa-envelope">&nbsp;</i>{{d.dealer["email"]}} <br/> 
+        	<i class="fa fa-mobile">&nbsp;</i>{{d.dealer["mobileNumber"]}} 
+        </td>
+        <td style="width:20%; min-width: 200px">{{d.dealer["address"]}} - {{d.dealer["pincode"]}}</td>
+      
+        <td *ngIf="d.discountedPrice">{{d.discountedPrice}}</td>
+        <td *ngIf="!d.discountedPrice" title="Quotation not updated"> -NA- </td>
+        
+        <td *ngIf="d.filePath">
+          <a href="{{baseUrl}}/uploaded/{{d.filePath}}">
+            {{d.filePath}}
+          </a>
+        </td>
+        
+        <td>
+          <a  [routerLink]="['./../book-online']" [queryParams]="{'variant':d.variant['variantId'], 'quotation_id': d.quotation_id}" [target]="_blank" >
+            <button class="btn-primary">
+            <i class="fa fa-edit" title="Respond"></i>
+            Book Online
+            </button>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <div *ngIf="!quotationList || !quotationList.length" class="alert alert-warning">
+    <i class="fa fa-warning">&nbsp;</i>
+    It seems you have requested for any quote.
+  </div>
+</div>

@@ -1,0 +1,153 @@
+<div class="maingallery main-content-wrapper">
+	<div class="header">
+		<h2>Get Quote</h2>
+	</div>
+
+	<div>
+		<div *ngIf="!formSubmitSuccess" class="form-holder with-image" id="content-holder">
+			<div class="form-box">
+			  <form class="form-inline cp-form"  #ctForm="ngForm" (submit)="formSubmit(0)" >
+			  <div class="form-group">
+			    <label for="firstName">First Name:</label>
+			    <input type="text" required [(ngModel)]="userModel.firstName" class="form-control" id="firstName" name="firstName" minlength="3" maxlength="20" #firstName="ngModel">
+			    <div class="f_message">
+				    <div class="error" *ngIf="firstName.errors && firstName.errors.required && (firstName.dirty || firstName.touched)">
+				    	<span class="fa fa-times">&nbsp;</span> First Name required
+				    </div>
+				    <div class="error" *ngIf="firstName.errors && firstName.errors.minlength   && (firstName.dirty || firstName.touched)">
+				    	<span class="fa fa-times">&nbsp;</span> Provide valid first name
+				    </div>
+				</div>
+			  </div>
+
+			  <div class="form-group">
+			    <label for="lastName">Last Name:</label>
+			    <input type="text" required [(ngModel)]="userModel.lastName" class="form-control" id="lastName" name="lastName" minlength="2" maxlength="20" #lastName="ngModel">
+			    <div class="f_message">
+				    <div class="error" *ngIf="lastName.errors && lastName.errors.required && (lastName.dirty || lastName.touched)">
+				    	<span class="fa fa-times">&nbsp;</span> Last Name required
+				    </div>
+				    <div class="error" *ngIf="lastName.errors && lastName.errors.minlength && (lastName.dirty || lastName.touched)">
+				    	<span class="fa fa-times">&nbsp;</span> Provide valid last name
+				    </div>
+				</div>
+			  </div>
+
+			   <div class="form-group">
+			    <label for="mobileNumber">Mobile Number:</label>
+			    <input type="text" required class="form-control" [(ngModel)]="userModel.mobileNumber"  id="mobileNumber" name="mobileNumber" maxlength="10" #mobileNumber="ngModel">
+			    <div class="f_message">
+			    	<div class="error" *ngIf="mobileNumber.errors && mobileNumber.errors.required && (mobileNumber.dirty || mobileNumber.touched)">
+				    	<span class="fa fa-times">&nbsp;</span> Mobile number required
+				    </div>
+				    <div class="error" *ngIf="mobileNumber.errors && mobileNumber.errors.maxlength && (mobileNumber.dirty || mobileNumber.touched)">
+				    	<span class="fa fa-times">&nbsp;</span> Provide valid mobile number
+				    </div>
+			    </div>
+			  </div>
+
+			  <div class="form-group">
+			    <label for="email">Email:</label>
+			    <input type="email" required class="form-control" [(ngModel)]="userModel.email" id="email" name="email" minlength="6" maxlength="300" #emailId="ngModel">
+			    <div class="f_message">
+			    	<div class="error" *ngIf="emailId.errors && emailId.errors.required && (emailId.dirty || emailId.touched)">
+				    	<span class="fa fa-times">&nbsp;</span> Email id required
+				    </div>
+				    <div class="error" *ngIf=" emailId.invalid && (emailId.dirty || emailId.touched)">
+				    	<span class="fa fa-times">&nbsp;</span> Provide valid email i
+				    	d
+				    </div>
+			    </div>
+			  </div>
+
+
+			  <div class="form-group" *ngIf="stateCityList">
+			  	<label for="stateSelected">Select State</label>
+			    <select class="form-control"  name="stateSelected" id="stateSelected" (change)='showCities()' 
+			    [(ngModel)] = "userModel.stateSelected" #stateSelected1="ngModel">
+			    	<option value=-1 selected>--Select State--</option>
+					<option *ngFor="let s of stateCityList[0]['state']" value={{s.stateId}} >{{s.stateName}}</option>
+				</select>
+
+				<div class="f_message">
+				   <div class="error" *ngIf="stateSelected1.errors && stateSelected1.errors.required && (stateSelected1.dirty || stateSelected1.touched)">
+				    	<span class="fa fa-times">&nbsp;</span> Select a city
+				    		</div>
+					</div>
+			  </div>
+
+			  <div class="form-group"  (change)="renderDealers()">
+			  		<label for="city">Select City</label>
+			   		<select class="form-control" name="city" id="city" [(ngModel)]="userModel.city['cityId']" #city="ngModel">
+							<option value=-1>--Select City--</option>
+							<option *ngFor="let c of cityList" value={{c.cityId}}>{{c.cityName}}</option>
+					</select>
+
+					<div class="f_message">
+				    		<div class="error" *ngIf="city.errors && city.errors.required && (city.dirty || city.touched)">
+				    	<span class="fa fa-times">&nbsp;</span> Select a city
+				    		</div>
+					</div>
+				</div>
+
+			  <div class="form-group">
+			    <label for="dealer">Dealer Selected</label>
+			    
+			    <select class="form-control" name="dealer" id="dealer" required [(ngModel)]= "userModel.dealer['id']" #dealer="ngModel">
+			    	<option value=-1 selected="">Select</option>
+			    	<option *ngFor="let d of dealerList" value={{d.id}}>
+			    		{{d.firstName}}
+			    	</option>
+			    </select>
+
+			    <div class="f_message">
+				    <div class="error" *ngIf="dealer.errors && dealer.errors.required && (dealer.dirty || dealer.touched)">
+				    	<span class="fa fa-times">&nbsp;</span> Select a dealer
+				    </div>
+				</div>
+			  </div>
+
+			  <div class="form-group">
+			    <label for="variant">Choose Variant:</label>
+			    	
+			    <select class="form-control" name="variant" id="variant" required [(ngModel)]= "userModel.variant.variantId" #variant="ngModel" (change)="changeCarImage()">
+			    	<option value=-1 selected="">Select</option>
+			    	<option *ngFor="let v of vehicleList" value={{v.variantId}}>
+			    		{{v.variantName}}
+			    	</option>
+			    </select>
+
+			    <div class="f_message">
+				    <div class="error" *ngIf="variant.errors && variant.errors.required && (variant.dirty || variant.touched)">
+				    	<span class="fa fa-times">&nbsp;</span> Select your desired car variant
+				    </div>
+				</div>
+			  </div>
+			  
+			  <!--div class="checkbox">
+			    <label><input type="checkbox"> Remember me</label>
+			  </div-->
+			  
+			  <div class="button-group">
+				  <button type="submit" class="btn btn-default" [disabled]="!ctForm.form.valid || !ctForm.form.touched">PROCEED
+				  </button>
+				  <button type="reset" class="btn btn-default">RESET</button>
+			  </div>
+
+			</form>
+			</div>
+
+			<div *ngIf="vehicleList" class="image-box">
+				<img src="{{imageHostURL}}{{ variantImage }}" >
+			</div>
+		</div>
+
+		<div *ngIf="formSubmitSuccess" class="message-holder">
+			<div class="alert alert-success">
+				<strong>Success!</strong> Your request has been saved, our executive will reach you soon.
+				<br>You will redirected in {{timer}} second(s);
+			</div>
+		</div>
+	</div>
+
+</div>

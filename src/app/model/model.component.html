@@ -1,0 +1,20 @@
+
+
+<div class="maingallery main-content-wrapper">
+	 <div  class="col-md-3 col-xs-12 gallery"  *ngFor="let models of carList" >
+		<div class="gallery-inner" (click)="viewCar(models.variantId)">
+		<a target="_blank" href="javascript:void(0)">
+					<img src="{{imageHostURL}}{{models.imagePath}}" alt="5Terre" width="25%" height="10%">
+		</a>
+		<div class="desc">{{models.variantName}}</div>
+		</div>
+	</div>
+
+	<div *ngIf="!carList.length" class="col-md-12 col-xs-12 gallery">
+		<div class="alert alert-warning" style="text-align: center">
+			<i class="fa fa-warning">&nbsp;</i>
+			Sorry ! No variant available for this model.
+		</div>
+	</div>
+
+</div>

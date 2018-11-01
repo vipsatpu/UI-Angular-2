@@ -1,0 +1,97 @@
+
+ 
+<!-- <table id="menuTable" class="menuTable"> 
+<tr >
+  <td>
+      <img src= "{{ imgsrc }}"  height="52" width="52" id="img">
+  </td>
+  <td *ngFor= "let m of menu">
+      <span >
+          <button id="menuButton" class="menuButton" >{{m.name}}</button>
+          </span> 
+  </td>
+</tr>
+</table> -->
+
+<div id="header">
+  <div id="menuDisplay" class="pull-left">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav" style="width:auto">
+      <div class="container">
+        <div class="nav-item logo-box">
+          <!--img src= "{{ imgsrc }}"  height="52" width="52" id="img"-->
+          <span class="fa fa-car">&nbsp;</span>
+          <span class="logo_text">CG MOTORS</span>
+       </div>
+        <!--a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item" *ngFor= "let m of menu" >
+              <a class="nav-link js-scroll-trigger subMenu" (click)="loadComponent(m.name)">{{m.name}}</a>
+              <ul class="dropdown-menu">
+                    <li><a href="#">Dropdown 1</a></li>
+                    <li><a href="#">Dropdown 2</a></li>
+                    <li><a href="#">Dropdown 3</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+         <div class="search-box"> 
+                <input type="text" name="search-box" id="search-box" placeholder="Search..">
+                <button><span class="fa fa-search"></span></button>
+          </div>
+      </div>
+    </nav>
+ </div>
+</div>
+
+<div class="container main-content" >
+<router-outlet> 
+</router-outlet> 
+</div>
+
+<!-- 
+<div id="containers" class="container" style="height: 70px;">
+    <div
+      ng2-carouselamos
+      class="slides-wrapper"
+      [items]="items"
+      [width]="auto"
+      [$prev]="prev"
+      [$next]="next"
+      [$item]="item"
+        >
+    </div>
+    <ng-template #prev id="containerImage"> 
+    <img src="/src/assets/SliderImages/left.png" id="left"  width="42px" height="42px"/>
+  </ng-template>
+  <ng-template #next>
+    <img src="/src/assets/SliderImages/right.png" width="42px" height="42px" id="right" />
+  </ng-template>
+  <ng-template #item let-item let-i="index">
+      <div class="items">
+        <img src="{{ item.name }}">
+        
+      </div>
+            
+  </ng-template>
+  </div> -->
+
+
+
+<!--ul class="list-group" id="list">
+    <li id="sideMenuList" class="sideMenuList" *ngFor="let side of sideMenu" 
+       class="list-group-item">
+        <a href="https://www.google.com/">{{side.name}} </a>
+        <span class={{side.class}}></span>
+      </li>
+  </ul>     
+</div-->
+
+
+    
+  
+  

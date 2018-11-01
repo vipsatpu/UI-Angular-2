@@ -1,0 +1,53 @@
+.modal
+{
+	opacity: 0.5!important;
+}
+
+.fade{
+	opacity: 0.5!important;	
+}
+
+
+.white-bg{
+	background: #FFF;
+	padding-left: 2em;
+    padding-right: 2em;
+    box-shadow: -1px -2px 5px #686f72;
+}
+
+label{
+	display: block;
+}
+
+input {
+    padding: 4px 4px;
+    height: auto;
+    border-radius: 2px;
+    border: 1px solid #eee;
+    outline: none;
+    width: 100% !important;
+}
+
+.form-group{
+	width:50%;
+	float: left;
+	float: left;
+    padding: 0 1em;
+}
+
+.button-group{
+	padding: 15px 0;
+	text-align: center;
+	    width: 100%;
+    float: left;
+
+}
+
+.f_message{
+    height:15px;
+}
+
+.form-group .f_message .error{
+    color:#f44336;
+}
+

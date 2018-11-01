@@ -1,0 +1,84 @@
+    <div class="navbar-wrapper" id="main-navbar">
+        <div class="container-fluid">
+            <nav class="navbar navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        </button>
+                        <div class="nav-item logo-box">
+                            <!--img src= "{{ imgsrc }}"  height="52" width="52" id="img"-->
+                            <span class="fa fa-car">&nbsp;</span>
+                            
+                            <span class="logo_text" [routerLink]='["./../Cars"]'>CG MOTORS</span>
+                        </div>
+                    </div>
+
+
+                        <div class="search-box pull-right"> 
+                                <input type="text" name="search-box" id="search-box" placeholder="Search..">
+                                <button><span class="fa fa-search"></span></button>
+                        </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav pull-right">
+
+                          <!--
+<<<
+                            <li class="" *ngFor= "let m of menu">
+                                <a *ngIf="m.subMenus.length==0" href="#" class="" (click)="loadComponent(m.menuName)">{{m.menuName}}</a>
+                                <a *ngIf="m.subMenus.length>0" href="javascript:v" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{m.menuName}}<span class="caret"></span></a>
+                                <ul *ngIf="m.subMenus" class="dropdown-menu">
+                                    <li *ngFor="let c of m.subMenus" class=" dropdown">
+                                        <a href="#" class="dropdown-toggle " data-toggle="dropdown" (click)="loadComponent(m.menuName, c.subMenuName)" role="button" aria-haspopup="true" aria-expanded="false">{{c.subMenuName}}</a>
+                                    </li>
+                                </ul>
+                            </li> 
+====
+ -->
+                        <li class="" *ngFor= "let m of menu">
+                            <a *ngIf="m.subMenus.length==0" href="#" class="" (click)="loadComponent(m.menuName)">{{m.menuName}}</a>
+                            <a *ngIf="m.subMenus.length>0" href="javascript:v" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{m.menuName}}<span class="caret"></span></a>
+                            <ul *ngIf="m.subMenus" class="dropdown-menu">
+                                <li *ngFor="let c of m.subMenus" class=" dropdown">
+                                    <a href="#" class="dropdown-toggle " data-toggle="dropdown" (click)="loadComponent(m.menuName, c.subMenuId, c.subMenuName)" role="button" aria-haspopup="true" aria-expanded="false">{{c.subMenuName}}</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li *ngIf="userType==1">
+                            <a  href="#" class="" [routerLink]='["./quotation-list"]'>Quotations</a>
+                        </li>
+                        <li *ngIf="userType==2">
+                            <a  href="#" class="" [routerLink]='["./your-quotation"]'>Your Quotation</a>
+                        </li>
+                        <li>
+                            <app-login-modal></app-login-modal> 
+                        </li> 
+                    </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+
+<div class="container main-content" >
+        <div class="breadcumbs" *ngIf="currentURL != homePageURL ">
+            <a class="level1">{{breadCumbs[0]}}</a>
+            |
+            <a class="level1">{{breadCumbs[1]}}</a>
+        </div>
+        
+        <router-outlet> 
+        </router-outlet> 
+</div>
+    <footer class="page-footer font-small" id="footer">
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+        <a href="#">CG Motors</a>
+    </div>
+    <!-- Copyright -->
+    </footer>
+    <!-- Footer -->

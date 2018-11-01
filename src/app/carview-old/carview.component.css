@@ -1,0 +1,22 @@
+.item_wrap{
+	font-size: 15px;
+    line-height: 150%;
+    font-family: Arial,AppleGothic,Sans-Serif,Helvetica;
+    color: #333;
+	margin-left:15%;
+	margin-top:10%;
+	}
+.carImage{
+position:relative;
+margin-left:25%;
+}
+
+.galleryButtons
+{
+margin-left:35%;
+}
+
+.imgButton{
+    margin-left:5%;
+    margin-right:5%;
+    }

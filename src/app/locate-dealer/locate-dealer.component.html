@@ -1,0 +1,61 @@
+
+
+<div class="maingallery main-content-wrapper">
+	<div class="col-md-4 left-block">
+		<div class="inner">
+			<div class="form-elements">
+				<form class="form-inline" name="locate-dealer-frm" action="/action_page.php">
+				  <div class="form-group">
+				    <select *ngIf="states_cities" name="ld-state" (change)='showCities()' [(ngModel)] = "stateSelected">
+				    	<option value=-1 selected>--Select State--</option>
+						<option *ngFor="let s of states_cities[0]['state']" value={{s.stateId}} >{{s.stateName}}</option>
+					</select>
+				  </div>
+				  &nbsp;
+				  <div class="form-group"  (change)="renderDealers()"  >
+				    <select name="ld-city" [(ngModel)]="citySelected">
+						<option value=-1>--Select City--</option>
+						<option *ngFor="let c of only_cities" value={{c.cityId}} >{{c.cityName}}</option>
+					</select>
+				  </div>
+				</form>
+			</div>
+			
+			<div>&nbsp;</div>
+
+			<div>
+				<div *ngIf="!stateSelected || !citySelected" class="alert alert-warning c-alert">Select State & City
+				</div>
+				<div *ngIf="stateSelected && citySelected && dealers_list" class="alert alert-info c-alert">
+				{{dealers_list.length}} dealers(s) found.</div>
+
+				<div *ngIf="stateSelected && citySelected && !dealers_list" class="alert alert-info c-alert">No dealer found</div>
+
+				<div class="dealer-list" *ngFor="let dealer of dealers_list" (click)="btn_action(dealer.id,'get-quote')">
+					<h3>{{dealer.firstName}}</h3>
+					<p>{{dealer.address}} - {{dealer.pincode}}</p>
+					<div>
+						<span class="fa fa-globe">:&nbsp;</span><span class="web">{{dealer.website}}</span>
+						<br/>
+						<span class="fa fa-mobile">:&nbsp;</span><span class="web">{{dealer.mobileNumber}}</span>
+					</div>
+					<div class="buttons">
+						<button class="primary btn btn1" (click)="btn_action(dealer.id,'get-quote')">Get Quote</button>
+						&nbsp;
+						<!--button class="primary btn btn2" (click)="btn_action(dealer.id,'book-online')">Book Online</button-->
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+	<div class="col-md-8 right-block">
+		<div *ngIf="dealers_list">
+				<!--img src="src/assets/google-map.png" style="width:100%"/-->
+				<agm-map [(latitude)]="location.lat" [(longitude)]="location.lng" [(zoom)]="location.zoom" [disableDefaultUI]="true" [zoomControl]="true" [(fitBounds)]='location.viewport'>
+  <agm-marker *ngFor="let m of markerList" [(latitude)]="m.lat" [(longitude)]="m.lng" [markerDraggable]="location.marker.draggable" (dragEnd)='markerDragEnd($event)'></agm-marker>
+</agm-map>
+		</div>
+	</div>
+</div>

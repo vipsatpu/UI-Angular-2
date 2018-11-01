@@ -1,0 +1,100 @@
+
+<div id="main Div">
+  <!-- Section 1 starts -->
+  <div id="cover" class="{{ displaycover }}" >
+      <div class="maingallery main-content-wrapper">
+        <div class="header">
+          <h2>{{variantName}}</h2>
+        </div>
+      <!--div id=main class="item_wrap"-->
+      <div class="mkv col-md-3" style="">
+        <div class="title">
+            <strong> Grand Capgemni Motors Car </strong>
+            <br>
+            It's Woooowsome!!!
+            <br>
+        </div>
+        <ul>
+            <li>Bold new looks</li>
+            <li>New levels of connectivity</li>
+            <li>Unbeatable space and practicality</li>
+        </ul>
+        <div class="testDrive">
+              <a [routerLink]='["./../book-test-drive"]' [queryParams]="{'variant':variantId}"><img src="src/assets/test.png"> </a>
+        </div>
+        <div class="chekOut">
+              <a [routerLink]='["./../locate-dealers"]' [queryParams]="{'variant':variantId}"><!--img src="src/assets/price.png"--> 
+                <button class="get-quote-btn">
+                <span class="content">Get Quote</span>
+                <span class="arrow"><i class="fa fa-angle-right small"></i><i class="fa fa-angle-right big"></i></span>
+                </button>
+              </a>
+        </div>
+        <div class="bookDrive">
+              <a [routerLink]='["./../book-online"]' [queryParams]="{'variant':variantId}"><img src="src/assets/book.png"> </a>
+        </div>
+      </div>
+   <div class="col-md-7 carImage">
+      <img src="{{ img }}"/>
+   </div>
+
+    <div class="colorbuttons col-md-2">
+    <ul  *ngFor= "let colorB of imgarray" >
+        <button id="colorb" class="{{ colorB.color }}" value="{{ colorB.id }}" (click)="color(colorB.id)" ></button>
+    </ul>
+    </div>
+    <div class="galleryButtons">
+      <a href="javascript:;"><img src="src/assets/cover.jpg"   (click)="cover($event)"  class="imgButton"></a>
+      <a href="javascript:;"><img src="src/assets/gallerybutton.jpg"  (click)="gallery($event)"  class="imgButton">
+      </a>
+      <a href="javascript:;"><img src="src/assets/expButton.jpg" (click)="exp30($event)" class="imgButton"></a>
+    </div>
+    </div>
+</div>
+<!-- Section 1 Ends -->
+
+
+<!-- Section 3 starts -->
+<div id="GalleryDiv" class="{{ displaygallery }}"  >
+  <div >
+      <img src="src/assets/gallery.png" >
+    <div class="grid-container">
+         <div *ngFor="let image of _album; let i=index" class="grid-item">
+            <img [src]="image.thumb" (click)="open(i)"/>
+          </div>
+    </div>  
+        <div class="galleryButtons">
+            <a href="javascript:;"><img src="src/assets/cover.jpg" (click)="cover($event)" class="imgButton"></a>
+            <a href="javascript:;"><img src="src/assets/gallerybutton.jpg" (click)="gallery($event)"  class="imgButton"></a>
+            <a href="javascript:;"><img src="src/assets/expButton.jpg" (click)="exp30($event)" class="imgButton"></a>
+          </div>
+     </div>
+ </div>
+ <!-- Section 3 ends -->
+ 
+
+<!-- Section 2 starts -->
+<div id="360Div" class="{{ display360 }}" >
+  <div>
+      <div class="360view">
+          <!-- <img src="src/assets/exp360.png"> -->
+          <h5>Actual Product may differ</h5>
+          <h6 style="font-size:10px">Long Press Mouse To Zoom</h6>
+      </div>
+      <div id="view360"></div>
+      
+      <div class="galleryButtons">
+          <a href="javascript:;"><img src="src/assets/cover.jpg" (click)="cover($event)" class="imgButton"></a>
+          <a href="javascript:;"><img src="src/assets/gallerybutton.jpg" (click)="gallery($event)"  class="imgButton"></a>
+          <a href="javascript:;"><img src="src/assets/expButton.jpg" (click)="exp30($event)" class="imgButton"></a>
+        </div>
+  </div>
+</div>
+<!-- Section 2 ends -->
+
+
+</div>
+          
+
+
+ 

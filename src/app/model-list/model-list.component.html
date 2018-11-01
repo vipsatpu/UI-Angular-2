@@ -1,0 +1,12 @@
+<div class="maingallery" style="
+width: 100%;
+height:40px; ">
+  
+<div class="gallery"  *ngFor="let list of listmodel" >
+    <a target="_blank" href="#">
+      <img src="{{list.img}}" alt="5Terre" width="25%" height="10%">
+    </a>
+     <div class="desc">{{list.name}}</div>
+  </div>
+  
+</div>

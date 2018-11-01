@@ -1,0 +1,34 @@
+<div class="maingallery main-content-wrapper">
+	<div class="header">
+		<h2>Quotation Request</h2>
+	</div>
+	<div *ngIf="quotationList && quotationList.length">
+		<table class="table table-striped">
+    <thead>
+      <tr>
+        <th *ngFor="let h of tablerHeaders">{{h}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let d of quotationList">
+      	<td>{{d.quotation_id}}</td>
+        <td>{{d.user["firstName"]}} {{d.user["lastName"]}}</td>
+        <td>
+        	<i class="fa fa-envelope">&nbsp;</i>{{d.user["email"]}} <br/> 
+        	<i class="fa fa-mobile">&nbsp;</i>{{d.user["mobileNumber"]}} </td>
+        <td>{{d.variant["variantName"]}}</td>
+        <td>
+        	<button class="btn-primary"  (click)="uploadQuote(d.quotation_id)">
+        	<i class="fa fa-edit" title="Respond"></i>
+        	Upload Quote
+        	</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <div *ngIf="!quotationList || !quotationList.length" class="alert alert-warning">
+    <i class="fa fa-warning">&nbsp;</i>
+     No quotation request yet!
+  </div>
+</div>

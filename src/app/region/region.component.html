@@ -1,0 +1,88 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="" id="container"  >
+  <div class="container">
+    <div class="icon">
+      <img src= "{{ imgsrc }}"  height="70" width="72" id="img">
+    </div>
+    <h4 id="label">Choose Your Market</h4>
+    
+  <!--table id ="region">
+      <tr>
+        <th>
+          
+        </th>
+      </tr>
+      <tr>
+      <td>
+        <div class="form-group">
+      <select *ngIf="getCountries()" [(ngModel)]="selectedCountry"
+     (change)="onSelectCountry($event.target.value)" 
+    class="form-control input-lg" id="country">
+       <option value="0">Select Country</option>
+      <option *ngFor="let country of getCountries()" 
+      value= {{country.id}}>{{country.name}}
+       </option>
+       </select>
+      </div>
+  </td>
+<td>
+  <div class="form-group">
+    <select *ngIf="states" [(ngModel)]="selectedState"
+     (change)="onSelectState($event.target.value)"
+     class="form-control input-lg" id="state">
+
+        <option value="0">Select State</option>
+      <option *ngFor="let state of states" value= {{state.id}}>{{state.name}}
+            </option>
+    </select>
+  </div>
+
+</td>
+</tr>
+</table--->
+<div class="form-group-wrapper">
+  <div class="form-group">
+      <select *ngIf="countriesList" [(ngModel)]="selectedCountry"
+     (change)="onSelectCountry($event.target.value)" 
+    class="form-control input-lg" id="country">
+       <option value="0">Select Country</option>
+      <option *ngFor="let country of countriesList" 
+      value= {{country.id}}>{{country.name}}
+       </option>
+       </select>
+    </div>
+    <div class="space">&nbsp;</div> 
+    <div class="form-group">
+    <select *ngIf="states" [(ngModel)]="selectedState"
+     (change)="onSelectState($event.target.value)"
+     class="form-control input-lg" id="state">
+
+        <option value="0">Select State</option>
+      <option *ngFor="let state of states" value= {{state.stateId}}>{{state.stateName}}
+            </option>
+    </select>
+  </div>
+   <div class="space">&nbsp;</div> 
+  <div class="form-group">
+    <select *ngIf="cities" [(ngModel)]="selectedCity" class="form-control input-lg" id="city">
+
+        <option value="0">Select City</option>
+      <option *ngFor="let city of cities" value= {{city.cityId}}>{{city.cityName}}
+            </option>
+    </select>
+  </div>
+
+</div>
+<div class="button_box">
+<button id="redirect" (click)="redirect(selectedCountry,selectedState)"  > Continue > </button>
+</div>  
+  <!-- <div class="form-group">
+    <label class="control-label" for="City">City:</label>
+    <select class="form-control input-lg" id="city">
+        <option *ngIf="!selectedState" value="0">Select City</option>
+        <option *ngFor="let city of cities" value= {{city.id}}>{{city.name}}</option>
+    </select>
+  </div> -->
+  </div>
+</div>
+
